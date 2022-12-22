@@ -1,6 +1,6 @@
 package com.bbw.mashup.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +15,7 @@ public class Weather {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
-    private String name;
+    private int temp;
 
     @OneToMany(mappedBy="weather")
     private List<Flights> flights;

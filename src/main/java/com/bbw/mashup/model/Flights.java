@@ -1,11 +1,11 @@
 package com.bbw.mashup.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -16,11 +16,15 @@ public class Flights {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private String text;
-    private int rating;
-    @Temporal(TemporalType.DATE)
-    @Column(name="creation_date")
-    private Date creationDate;
+    private String airline;
+    private int planeNr;
+    @Temporal(TemporalType.TIME)
+    @Column(name="departure_time")
+    private LocalTime departureTime;
+
+    @Temporal(TemporalType.TIME)
+    @Column(name="arrival_time")
+    private LocalTime arrivalTime;
 
     @ManyToOne
     @JoinColumn(name="weather_idfs", nullable=false)
